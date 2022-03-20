@@ -51,32 +51,46 @@ namespace GraficaTestuale
     {
         static void Main(string[] args)
         {
+            int ToccaA = 0;
+            string Scelta = "S";
+            string AzionePlayer = "";
+            string AzioneEnemy = "";
+            string AzioneEnemySpiegaz = "";
+
+
             Player player = new Player();
             player.Name = "Luca";
-            player.HealthPoints = 10;
-            player.Damamage = 10;
-            player.Gold = 10;
+            string PlayerName = player.Name;
+            player.HealthPoints = 100;
+            int PlayerHP = player.HealthPoints;
+            player.Damage = 20;
+            int PlayerDamage = player.Damage;
+            player.Gold = 1;
+            int PlayerGold = player.Gold;
             player.Armatura = "Sacco di patate";
+            string PlayerArmatura = player.Armatura;
             player.Arma = "Spada arruginita spezzata e storta";
-            player.Difesa = 10;
-            int ToccaA = 0;
-            string scelta = "S";
-
+            string PlayerArma = player.Arma;
+            player.Difesa = 20;
+            int PlayerDifesa = player.Difesa;
             string[] EnemyName = new string[3];
             int[] EnemyHealtPoints = new int[3];
             int[] EnemyDamage = new int[3];
             int[] EnemyLoot = new int[3];
+            int[] EnemyDifesa = new int[3];
+
             for (int i = 0; i < 3; i++)
             {
                 Enemy enemy = new Enemy();
                 enemy.Name = "Enemy" + i;
                 EnemyName[i] = enemy.Name;
-                enemy.HealthPoints = 10;
+                enemy.HealthPoints = 80;
                 EnemyHealtPoints[i] = enemy.HealthPoints;
                 enemy.Damamage = 5;
                 EnemyDamage[i] = enemy.Damamage;
                 enemy.Loot = 10;
                 EnemyLoot[i] = enemy.Loot;
+                EnemyDifesa[i] = enemy.Difesa;
             }
             Console.WriteLine("Benvenuto nel mio primo gdr testuale!");
             Console.WriteLine("Quale è il tuo Nome coraggioso eroe?!!!");
@@ -86,23 +100,23 @@ namespace GraficaTestuale
             Console.ReadKey();
             Console.WriteLine("Oh!! Sei appena stato convocato dal Re Maccio per una nuova avventura!!");
             Console.WriteLine("Vuoi andare? 'digita S o N'");
-            //scelta = Console.ReadLine();
-            if (scelta == "S")                                                                                        //convocazione di Re Maccio
+            Scelta = Console.ReadLine();
+            if (Scelta == "S")                                                                                        //convocazione di Re Maccio
             {
                 Console.WriteLine("Bene non sei un coniglio!");
                 Console.WriteLine(" Dopo averlo atteso 2 ore");
-                //for (int i = 0; i < 2; i++)
-                //{
-                //    Thread.Sleep(500);
-                //    Console.Write(".");
-                //}
+                for (int i = 0; i < 2; i++)
+                {
+                    Thread.Sleep(500);
+                    Console.Write(".");
+                }
                 Console.WriteLine("'Questa attesa serve per immergerti ancora di più nella storia...'");
                 Console.ReadKey();
                 Console.WriteLine("...in breve il Re ha notato che questa mattina non si è presentata a colazione la sua figlia principessina!!!");
                 Console.WriteLine("Lui è convinto chesia stato il drago a rapirla e ti chiede se hai voglia di andare a recuperarla nella sua tana.");
                 Console.WriteLine("Ti andrebbe?");
-                //scelta = Console.ReadLine();
-                if (scelta == "S")                                                                                               // Andare a salvare la principessa?
+                Scelta = Console.ReadLine();
+                if (Scelta == "S")                                                                                               // Andare a salvare la principessa?
                 {
                     Console.WriteLine("Bene sei coraggioso!!! Ora però è ora di cena quindi andate a mangiare!!! Partirai domani mattina dopo una bella dormita! Tanto la grotta dista solo mezzoretta di strada!");
                     Console.ReadKey();
@@ -112,19 +126,20 @@ namespace GraficaTestuale
                     Console.ReadKey();
                     Console.WriteLine("Ottimo sei riposato e rifocillato con una ottima colazione vegana a base di pane e acqua!!! Sei proprio pronto per partire!");
                     Console.WriteLine("Prima di partire vuoi per caso passare dal negozio ad acquistare qualcosa per il viaggio?");
-                    //scelta = Console.ReadLine();
-                    if (scelta == "S")                                                                                       //Negozio??
+
+                    Scelta = Console.ReadLine();
+                    if (Scelta == "S")                                                                                       //Negozio??
                     {
                         Console.WriteLine("Mi dispiace è chiuso. 'No non è vero non ho ancora avuto voglia di programmare pure il negozio. Ti terrai i tuoi vestiti da straccione, il tuo scudo bucato e la tua spada storta. ;)'");
                         Console.ReadKey();
                     }
                     else
                     {
-                        Console.WriteLine("Grande sei fortissimo già cosi come sei!'No non è vero, non sei assolutamente preparato per nulla, neanhe per andare a fare la spesa al conad'");
+                        Console.WriteLine("Grande sei fortissimo già cosi come sei!'No non è vero, non sei assolutamente preparato per nulla, neanche per andare a fare la spesa al conad'");
                         Console.ReadKey();
                     }
                     Console.WriteLine();
-                    Console.WriteLine("Grandioso!!! Stai per intraprendere la tua prima avventura!! quindi è giusto vedere come sei 'messo'");
+                    Console.WriteLine("Grandioso!!! Stai per intraprendere la tua prima avventura!! quindi è giusto vedere 'come sei messo'");
                     player.VediEquip();
                     Console.ReadKey();
                     Console.WriteLine("Ora puoi veramente partire verso la tana del drago che puoi già vedere in lontananza in cima alla collina!");
@@ -132,8 +147,8 @@ namespace GraficaTestuale
                     Console.WriteLine("Oh nooo!! mentre passeggi per il sentiero appena uscito dal villaggio incontri un tizio poco promettente incappucciato e leggermente gobbo... ");
                     Console.WriteLine("Attenzione è un bandito e ti vuole derubare!!!' che cosa poi? non lo sa che sei uno straccione -.-'? '");
                     Console.WriteLine("Hai capito che ti vuole attaccare ma è ancora lontano... vuoi attaccarlo per primo?");
-                    //scelta = Console.ReadLine();
-                    if (scelta == "S")
+                    Scelta = Console.ReadLine();
+                    if (Scelta == "S")
                     {
                         ToccaA = 0;
                     }
@@ -142,51 +157,92 @@ namespace GraficaTestuale
                         ToccaA = 1;
                     }
 
-                    while (EnemyHealtPoints[0] >= 0)
+                    while (EnemyHealtPoints[0] > 0)
                     {
                         if (ToccaA == 0)
                         {
-                            Console.WriteLine(@" _______________________________________________________________________________________________________________");
-                            Console.WriteLine(@"|                                                                                                               |");
-                            Console.WriteLine(@"|         ------------                                           _____                                          |");
-                            Console.WriteLine(@"|        | Giocatore1 |                                      .-,;='';_),-.                                      |");
-                            Console.WriteLine(@"|        | PV: " + player.HealthPoints + @"     |                                       \_\(),()/_/                                       |  ");
-                            Console.WriteLine(@"|        | Atk: " + player.Damamage + @"    |                                         (,___,)                                         |  ");
-                            Console.WriteLine(@"|        | Def: " + player.Difesa + @"    |                                        ,-/`~`\-,___                                     |");
-                            Console.WriteLine(@"|         ------------                                        / /).:.('--._)                                    |");
-                            Console.WriteLine(@"|                                                            {_[ (_,_)                                          |");
-                            Console.WriteLine(@"|              .=.,                                              | Y |                                          |");
-                            Console.WriteLine(@"|             ;c =\                                             /  |  \                                         |");
-                            Console.WriteLine(@"|          __ | _ /                                                                                             |");
-                            Console.WriteLine(@"|        .'-'-._ /-'-._                                    ------------                                         |");
-                            Console.WriteLine(@"|       / ..           \                                  | Giocatore1 |                                        |");
-                            Console.WriteLine(@"|      / ' _   	   )   \                                  | PV: " + player.HealthPoints + @"     |                                        |");
-                            Console.WriteLine(@"|     (  / \--   --/'._  )                                | Atk: " + player.Damamage + @"    |                                        |");
-                            Console.WriteLine(@"|      \-;_/\__;__/ _/ _/                                 | Def: " + player.Difesa + @"    |                                        |");
-                            Console.WriteLine(@"|       '._}|==o==\{_\/                                    ------------                                         |");
-                            Console.WriteLine(@"|        /  /-._.--\ \_                                                                                         |");
-                            Console.WriteLine(@"|       // /   /|   \ \ \                                                                                       |");
-                            Console.WriteLine(@"|      / | |   | \;  |  \ \                                                                                     |");
-                            Console.WriteLine(@"|     / /  | :/   \: \   \_\                                                                                    |");
-                            Console.WriteLine(@"|    /  |  /.'|   /: |    \ \                                                                                   |");
-                            Console.WriteLine(@"|    |  |  |--| . |--|     \_\                                                                                  |");
-                            Console.WriteLine(@"|   / _ /   \ | : | /___--._) \                                                                                 |");
-                            Console.WriteLine(@"|  |_(---'-| >-'-| |       '-'                                                                                  |");
-                            Console.WriteLine(@"|           /_ /  \_\                                                                                           |");
+                            Console.Clear();
+                            GrigliaCombattimentoTurnoGiocatore(EnemyHealtPoints, EnemyDamage, EnemyDifesa, PlayerHP, PlayerDamage, PlayerDifesa, AzionePlayer);
+                            Console.WriteLine(@"|                                                                                      |");
+                            Console.WriteLine(@"|                                                                                      |");
+                            Console.WriteLine(@"|______________________________________________________________________________________|");
+                            Console.SetCursorPosition(3, 29);
+                            AzionePlayer = Console.ReadLine();
 
 
-                            Console.WriteLine(@" _______________________________________________________________________________________________________________");
-                            Console.ReadKey();
 
-                            ToccaA = 1;
+                            if (AzionePlayer == "1")
+                            {
+                                EnemyHealtPoints[0] = EnemyHealtPoints[0] - PlayerDamage;
+                                ToccaA = 1;
+                            }
+                            else if (AzionePlayer == "2")
+                            {
+                                PlayerDifesa = PlayerDifesa + 5;
+                                ToccaA = 1;
+                            }
+                            else if (AzionePlayer == "3")
+                            {
+                                PlayerHP = PlayerHP + 10;
+                                ToccaA = 1;
+                            }
+                            else if (AzionePlayer == "4")
+                            {
+                                Console.Clear();
+                                Console.WriteLine("Ti credi spiritoso? Già tanto che hai una spada rotta sei ignorante come una capra e parli a mala pena la tua lingua");
+                                ToccaA = 0;
+                                Console.ReadKey();
+                            }
+                            else if (AzionePlayer == "5")
+                            {
+                                Console.WriteLine("Bravo sei saggio, cosi porti a casa la pellaccia!");
+                                break;
+                            }
+
                         }
                         else if (ToccaA == 1)
                         {
+                            Console.Clear();
+                            if (EnemyHealtPoints[0] < 30)
+                            {
+                                AzioneEnemy = "Curarsi";
+                                AzioneEnemySpiegaz = "Il nemico sta prendendo schiaffi quindi decide di curarsi";
+                                EnemyHealtPoints[0] = EnemyHealtPoints[0] + 5;
+                            }
+                            else
+                            {
+                                AzioneEnemy = "Attaccare";
+                                AzioneEnemySpiegaz = "Il Nemico ti attacca e ti ferisce. Perdi 3 PV";
+                                PlayerHP = PlayerHP - 3;
+                            }
 
+
+                            GrigliaCombattimentoTurnoEnemy(EnemyHealtPoints, EnemyDamage, EnemyDifesa, PlayerHP, PlayerDamage, PlayerDifesa, AzioneEnemy, AzioneEnemySpiegaz);
+                            Console.WriteLine(@"|                                                                                      |");
+                            Console.WriteLine(@"|  " + AzioneEnemySpiegaz + "                                       |");
+                            Console.WriteLine(@"|______________________________________________________________________________________|");
+                            Console.SetCursorPosition(2, 29);
+                            Console.ReadKey();
 
                             ToccaA = 0;
                         }
                     }
+                    if (AzionePlayer == "1")
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Bravo hai ucciso per la prima volta una persona.");
+                        Console.WriteLine("Frughi nelle sue tasche e trovi 150 monete d'oro");
+                        Console.ReadKey();
+                    }
+                    else if (AzionePlayer == "5")
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Sei riuscito per un pelo a scappare, solo perchè era leggermente gobbo...");
+                        Console.ReadKey();
+                    }
+                    Console.Clear();
+                    Console.WriteLine("Preferisci andare al negozio a rifornirti?");
+                    Console.ReadKey();
 
 
 
@@ -244,6 +300,80 @@ namespace GraficaTestuale
             }
 
 
+        }
+        static void GrigliaCombattimentoTurnoGiocatore(int[] EnemyHealtPoints, int[] EnemyDamage, int[] EnemyDifesa, int PlayerHp, int PlayerDamage, int PlayerDifesa, string AzionePlayer)
+        {
+            Console.WriteLine(@" ______________________________________________________________________________________");
+            Console.WriteLine(@"|                                                                                      |");
+            Console.WriteLine(@"|            ------------                                           _____              |");
+            Console.WriteLine(@"|           | Giocatore1 |                                      .-,;='';_),-.          |");
+            Console.WriteLine(@"|           | PV: " + PlayerHp + @"     |                                       \_\(),()/_/           |  ");
+            Console.WriteLine(@"|           | Atk: " + PlayerDamage + @"     |                                         (,___,)             |  ");
+            Console.WriteLine(@"|           | Def: " + PlayerDifesa + @"    |                                        ,-/`~`\-,___         |");
+            Console.WriteLine(@"|            ------------                                        / /).:.('--._)        |");
+            Console.WriteLine(@"|                                                               {_[ (_,_)              |");
+            Console.WriteLine(@"|                 .=.,                                              | Y |              |");
+            Console.WriteLine(@"|                ;c =\                                             /  |  \             |");
+            Console.WriteLine(@"|             __ | _ /                                                                 |");
+            Console.WriteLine(@"|           .'-'-._ /-'-._                                      ------------           |");
+            Console.WriteLine(@"|          / ..           \                                    |   Bandito  |          |");
+            Console.WriteLine(@"|         / ' _        )   \                                   | PV: " + EnemyHealtPoints[0] + @"     |          |");
+            Console.WriteLine(@"|        (  / \--   --/'._  )                                  | Atk: " + EnemyDamage[0] + @"     |          |");
+            Console.WriteLine(@"|         \-;_/\__;__/ _/ _/                                   | Def: " + EnemyDifesa[0] + @"     |          |");
+            Console.WriteLine(@"|          '._}|==o==\{_\/                                      ------------           |");
+            Console.WriteLine(@"|           /  /-._.--\ \_                 ____________________________________________|");
+            Console.WriteLine(@"|          // /   /|   \ \ \              |                                            |");
+            Console.WriteLine(@"|         / | |   | \;  |  \ \            | TOCCA A TE!!                               | ");
+            Console.WriteLine(@"|        / /  | :/   \: \   \_\           |                                            |");
+            Console.WriteLine(@"|       /  |  /.'|   /: |    \ \          | 1. Attacca    2. Difenditi                 |");
+            Console.WriteLine(@"|       |  |  |--| . |--|     \_\         | 3. Curati     4. Lancia incantesimo        |");
+            Console.WriteLine(@"|      / _ /   \ | : | /___--._) \        | 5. Scappa come il coniglio che sei         |");
+            Console.WriteLine(@"|     |_(---'-| >-'-| |       '-'         | Cosa vuoi fare? (Digita il numero scelto)  |");
+            Console.WriteLine(@"|              /_ /  \_\                  |                                            |");
+            Console.WriteLine(@"|_________________________________________|____________________________________________|");
+
+
+
+
+
+
+
+
+            //Console.ReadKey();
+        }
+        static void GrigliaCombattimentoTurnoEnemy(int[] EnemyHealtPoints, int[] EnemyDamage, int[] EnemyDifesa, int PlayerHp, int PlayerDamage, int PlayerDifesa, string AzioneEnemy, string AzioneEnemySpiegaz)
+        {
+            Console.WriteLine(@" ______________________________________________________________________________________");
+            Console.WriteLine(@"|                                                                                      |");
+            Console.WriteLine(@"|            ------------                                           _____              |");
+            Console.WriteLine(@"|           | Giocatore1 |                                      .-,;='';_),-.          |");
+            Console.WriteLine(@"|           | PV: " + PlayerHp + @"      |                                       \_\(),()/_/           |  ");
+            Console.WriteLine(@"|           | Atk: " + PlayerDamage + @"     |                                         (,___,)             |  ");
+            Console.WriteLine(@"|           | Def: " + PlayerDifesa + @"    |                                        ,-/`~`\-,___         |");
+            Console.WriteLine(@"|            ------------                                        / /).:.('--._)        |");
+            Console.WriteLine(@"|                                                               {_[ (_,_)              |");
+            Console.WriteLine(@"|                 .=.,                                              | Y |              |");
+            Console.WriteLine(@"|                ;c =\                                             /  |  \             |");
+            Console.WriteLine(@"|             __ | _ /                                                                 |");
+            Console.WriteLine(@"|           .'-'-._ /-'-._                                      ------------           |");
+            Console.WriteLine(@"|          / ..           \                                    |   Bandito  |          |");
+            Console.WriteLine(@"|         / ' _        )   \                                   | PV: " + EnemyHealtPoints[0] + @"      |          |");
+            Console.WriteLine(@"|        (  / \--   --/'._  )                                  | Atk: " + EnemyDamage[0] + @"     |          |");
+            Console.WriteLine(@"|         \-;_/\__;__/ _/ _/                                   | Def: " + EnemyDifesa[0] + @"     |          |");
+            Console.WriteLine(@"|          '._}|==o==\{_\/                                      ------------           |");
+            Console.WriteLine(@"|           /  /-._.--\ \_                                                             |");
+            Console.WriteLine(@"|          // /   /|   \ \ \               ____________________________________________|");
+            Console.WriteLine(@"|         / | |   | \;  |  \ \            |                                            |");
+            Console.WriteLine(@"|        / /  | :/   \: \   \_\           |  TOCCA AL NEMICO!!                         |");
+            Console.WriteLine(@"|       /  |  /.'|   /: |    \ \          |                                            |");
+            Console.WriteLine(@"|       |  |  |--| . |--|     \_\         |  Il nemico decide di:" + AzioneEnemy + "             |");
+            Console.WriteLine(@"|      / _ /   \ | : | /___--._) \        |                                            |");
+            Console.WriteLine(@"|     |_(---'-| >-'-| |       '-'         |                                            |");
+            Console.WriteLine(@"|              /_ /  \_\                  |                                            |");
+            Console.WriteLine(@"|_________________________________________|____________________________________________|");
+
+
+            //Console.ReadKey();
         }
     }
 }

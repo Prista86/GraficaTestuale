@@ -12,6 +12,7 @@ namespace GraficaTestuale
         public int HealthPoints { get; set; }
         public int Damamage { get; set; }
         public int Loot { get; set; }
+        public int Difesa { get; set; }
 
         public void Attack() { }
         public void Heal() { }

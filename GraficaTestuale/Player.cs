@@ -10,7 +10,7 @@ namespace GraficaTestuale
     {
         public string Name { get; set; }
         public int HealthPoints { get; set; }
-        public int Damamage { get; set; }
+        public int Damage { get; set; }
         public int Gold { get; set; }
         public string Armatura { get; set; }
         public string Arma { get; set; }
@@ -27,9 +27,9 @@ namespace GraficaTestuale
             Console.WriteLine("Arma: " + this.Arma);
             Console.WriteLine("Come statistiche sei cosi messo:");
             Console.WriteLine("PV: "+this.HealthPoints);
-            Console.WriteLine("Atk: "+ this.Damamage);
+            Console.WriteLine("Atk: "+ this.Damage);
             Console.WriteLine("Def:" + this.Difesa);
-            Console.WriteLine("Hai nel borsello: " + this.Gold + " monete di rame");
+            Console.WriteLine("Hai nel borsello: " + this.Gold + " monete d'oro");
         }
 
     }
