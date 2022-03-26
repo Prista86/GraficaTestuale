@@ -9,11 +9,13 @@ namespace GraficaTestuale
     internal class Enemy
     {
         public int id { get; set; }
-        public string Name { get; set; }
-        public int HealthPoints { get; set; }
-        public int Damage { get; set; }
+        public string Nome { get; set; }
+        public double PuntiVita { get; set; }
+        public int DannoArma { get; set; }
         public int Loot { get; set; }
-        public int Difesa { get; set; }
+        public double Difesa { get; set; }
+        public int Attacco  { get; set; }
+        public int Pozioni { get; set; }
 
         public void Attack() { }
         public void Heal() { }

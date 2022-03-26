@@ -8,17 +8,21 @@ namespace GraficaTestuale
 {
     internal class Player
     {
-        public string Name { get; set; }
-        public int HealthPoints { get; set; }
-        public int Damage { get; set; }
-        public int MagicDamage { get; set; }
-        public int Gold { get; set; }
+        public string Nome { get; set; }
+        public double PuntiVita { get; set; }
+        public int DannoArma { get; set; }
+        public int DannoMagico { get; set; }
+        public int Oro{ get; set; }
         public string Armatura { get; set; }
+        public string Scudo { get; set; }
         public string Arma { get; set; }
         public string Magia { get; set; }
-        public int Difesa { get; set; }
-        public int Potion { get; set; }
-        public int HighPotion { get; set; }
+        public double Difesa { get; set; }
+        public double Attacco { get; set; }
+
+        public double AttaccoM { get; set; }
+        public int Pozioni { get; set; }
+        
 
 
         public void Attack() { }
@@ -26,19 +30,22 @@ namespace GraficaTestuale
 
         public void VediEquip()
         {
-            Console.WriteLine("Al momento sei equipaggiato con:");
-            Console.WriteLine("Armatura: " + this.Armatura);
+            Console.WriteLine();
+            Console.WriteLine("Al momento sei equipaggiato con:");            
             Console.WriteLine("Arma: " + this.Arma);
+            Console.WriteLine("Armatura: " + this.Armatura);
+            Console.WriteLine("Scudo: " + this.Scudo);
             Console.WriteLine("Magia: " + this.Magia);
-            Console.WriteLine("Pozioni: " + this.Potion);
-            Console.WriteLine("MegaPozioni"+this.HighPotion);
+            Console.WriteLine("Pozioni: " + this.Pozioni);
             Console.WriteLine();
             Console.WriteLine("Come statistiche sei cosi messo:");
-            Console.WriteLine("PV: " + this.HealthPoints);
-            Console.WriteLine("Atk: " + this.Damage);
-            Console.WriteLine("Magic Atk: " + this.MagicDamage);
-            Console.WriteLine("Def:" + this.Difesa);
-            Console.WriteLine("Hai nel borsello: " + this.Gold + " monete d'oro");
+            Console.WriteLine("Punti Vita: " + this.PuntiVita);
+            Console.WriteLine("Danno Arma: " + this.DannoArma);
+            Console.WriteLine("Danno Magico: " + this.DannoMagico);
+            Console.WriteLine("Attacco:" + this.Attacco);
+            Console.WriteLine("Difesa:" + this.Difesa);
+
+            Console.WriteLine("Hai nel borsello: " + this.Oro + " monete d'oro");
             Console.ReadKey();
         }
 
