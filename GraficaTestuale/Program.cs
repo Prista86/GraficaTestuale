@@ -51,47 +51,36 @@ namespace GraficaTestuale
     {
         static void Main(string[] args)
         {
-            int ToccaA = 0;
+            
             string Scelta = "S";
-            string AzionePlayer = "";
-            string AzioneEnemy = "";
+            int ToccaA = 0;
+            int idMostro = 0;
+
             string AzioneEnemySpiegaz = "";
 
 
             Player player = new Player();
             player.Name = "Luca";
-            string PlayerName = player.Name;
             player.HealthPoints = 100;
-            int PlayerHP = player.HealthPoints;
             player.Damage = 20;
-            int PlayerDamage = player.Damage;
             player.Gold = 1;
-            int PlayerGold = player.Gold;
             player.Armatura = "Sacco di patate";
-            string PlayerArmatura = player.Armatura;
             player.Arma = "Spada arruginita spezzata e storta";
-            string PlayerArma = player.Arma;
             player.Difesa = 20;
-            int PlayerDifesa = player.Difesa;
-            string[] EnemyName = new string[3];
-            int[] EnemyHealtPoints = new int[3];
-            int[] EnemyDamage = new int[3];
-            int[] EnemyLoot = new int[3];
-            int[] EnemyDifesa = new int[3];
+
+            Enemy[] enemies = new Enemy[3];
 
             for (int i = 0; i < 3; i++)
             {
                 Enemy enemy = new Enemy();
+                enemy.id = i;
                 enemy.Name = "Enemy" + i;
-                EnemyName[i] = enemy.Name;
                 enemy.HealthPoints = 80;
-                EnemyHealtPoints[i] = enemy.HealthPoints;
-                enemy.Damamage = 5;
-                EnemyDamage[i] = enemy.Damamage;
+                enemy.Damage = 5;
                 enemy.Loot = 10;
-                EnemyLoot[i] = enemy.Loot;
-                EnemyDifesa[i] = enemy.Difesa;
+                enemies[i] = enemy;                
             }
+
             Console.WriteLine("Benvenuto nel mio primo gdr testuale!");
             Console.WriteLine("Quale è il tuo Nome coraggioso eroe?!!!");
             player.Name = Console.ReadLine();
@@ -156,125 +145,11 @@ namespace GraficaTestuale
                     {
                         ToccaA = 1;
                     }
+                    
+                    idMostro = 0;
+                    Combattimento(enemies,player,idMostro,ToccaA, AzioneEnemySpiegaz);
 
-                    while (EnemyHealtPoints[0] > 0)
-                    {
-                        if (ToccaA == 0)
-                        {
-                            Console.Clear();
-                            GrigliaCombattimentoTurnoGiocatore(EnemyHealtPoints, EnemyDamage, EnemyDifesa, PlayerHP, PlayerDamage, PlayerDifesa, AzionePlayer);
-                            Console.WriteLine(@"|                                                                                      |");
-                            Console.WriteLine(@"|                                                                                      |");
-                            Console.WriteLine(@"|______________________________________________________________________________________|");
-                            Console.SetCursorPosition(3, 29);
-                            AzionePlayer = Console.ReadLine();
-
-
-
-                            if (AzionePlayer == "1")
-                            {
-                                EnemyHealtPoints[0] = EnemyHealtPoints[0] - PlayerDamage;
-                                ToccaA = 1;
-                            }
-                            else if (AzionePlayer == "2")
-                            {
-                                PlayerDifesa = PlayerDifesa + 5;
-                                ToccaA = 1;
-                            }
-                            else if (AzionePlayer == "3")
-                            {
-                                PlayerHP = PlayerHP + 10;
-                                ToccaA = 1;
-                            }
-                            else if (AzionePlayer == "4")
-                            {
-                                Console.Clear();
-                                Console.WriteLine("Ti credi spiritoso? Già tanto che hai una spada rotta sei ignorante come una capra e parli a mala pena la tua lingua");
-                                ToccaA = 0;
-                                Console.ReadKey();
-                            }
-                            else if (AzionePlayer == "5")
-                            {
-                                Console.WriteLine("Bravo sei saggio, cosi porti a casa la pellaccia!");
-                                break;
-                            }
-
-                        }
-                        else if (ToccaA == 1)
-                        {
-                            Console.Clear();
-                            if (EnemyHealtPoints[0] < 30)
-                            {
-                                AzioneEnemy = "Curarsi";
-                                AzioneEnemySpiegaz = "Il nemico sta prendendo schiaffi quindi decide di curarsi";
-                                EnemyHealtPoints[0] = EnemyHealtPoints[0] + 5;
-                            }
-                            else
-                            {
-                                AzioneEnemy = "Attaccare";
-                                AzioneEnemySpiegaz = "Il Nemico ti attacca e ti ferisce. Perdi 3 PV";
-                                PlayerHP = PlayerHP - 3;
-                            }
-
-
-                            GrigliaCombattimentoTurnoEnemy(EnemyHealtPoints, EnemyDamage, EnemyDifesa, PlayerHP, PlayerDamage, PlayerDifesa, AzioneEnemy, AzioneEnemySpiegaz);
-                            Console.WriteLine(@"|                                                                                      |");
-                            Console.WriteLine(@"|  " + AzioneEnemySpiegaz + "                                       |");
-                            Console.WriteLine(@"|______________________________________________________________________________________|");
-                            Console.SetCursorPosition(2, 29);
-                            Console.ReadKey();
-
-                            ToccaA = 0;
-                        }
-                    }
-                    if (AzionePlayer == "1")
-                    {
-                        Console.Clear();
-                        Console.WriteLine("Bravo hai ucciso per la prima volta una persona.");
-                        Console.WriteLine("Frughi nelle sue tasche e trovi 150 monete d'oro");
-                        Console.ReadKey();
-                    }
-                    else if (AzionePlayer == "5")
-                    {
-                        Console.Clear();
-                        Console.WriteLine("Sei riuscito per un pelo a scappare, solo perchè era leggermente gobbo...");
-                        Console.ReadKey();
-                    }
-                    Console.Clear();
-                    Console.WriteLine("Preferisci andare al negozio a rifornirti?");
-                    Console.ReadKey();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    
 
 
 
@@ -288,7 +163,6 @@ namespace GraficaTestuale
                     Console.ReadKey();
                     System.Environment.Exit(0);
                 }
-
             }
             else                                                                                   // No convocazione da Re Maccio
             {
@@ -298,18 +172,16 @@ namespace GraficaTestuale
                 Console.WriteLine("SEI MORTO");
                 Console.ReadKey();
             }
-
-
         }
-        static void GrigliaCombattimentoTurnoGiocatore(int[] EnemyHealtPoints, int[] EnemyDamage, int[] EnemyDifesa, int PlayerHp, int PlayerDamage, int PlayerDifesa, string AzionePlayer)
+        static void GrigliaCombattimentoTurnoGiocatore(Enemy[] enemies, Player player,int idMostro)
         {
             Console.WriteLine(@" ______________________________________________________________________________________");
             Console.WriteLine(@"|                                                                                      |");
             Console.WriteLine(@"|            ------------                                           _____              |");
             Console.WriteLine(@"|           | Giocatore1 |                                      .-,;='';_),-.          |");
-            Console.WriteLine(@"|           | PV: " + PlayerHp + @"     |                                       \_\(),()/_/           |  ");
-            Console.WriteLine(@"|           | Atk: " + PlayerDamage + @"     |                                         (,___,)             |  ");
-            Console.WriteLine(@"|           | Def: " + PlayerDifesa + @"    |                                        ,-/`~`\-,___         |");
+            Console.WriteLine(@"|           | PV: " + player.HealthPoints + @"     |                                       \_\(),()/_/           |  ");
+            Console.WriteLine(@"|           | Atk: " + player.Damage + @"     |                                         (,___,)             |  ");
+            Console.WriteLine(@"|           | Def: " + player.Difesa + @"    |                                        ,-/`~`\-,___         |");
             Console.WriteLine(@"|            ------------                                        / /).:.('--._)        |");
             Console.WriteLine(@"|                                                               {_[ (_,_)              |");
             Console.WriteLine(@"|                 .=.,                                              | Y |              |");
@@ -317,9 +189,9 @@ namespace GraficaTestuale
             Console.WriteLine(@"|             __ | _ /                                                                 |");
             Console.WriteLine(@"|           .'-'-._ /-'-._                                      ------------           |");
             Console.WriteLine(@"|          / ..           \                                    |   Bandito  |          |");
-            Console.WriteLine(@"|         / ' _        )   \                                   | PV: " + EnemyHealtPoints[0] + @"     |          |");
-            Console.WriteLine(@"|        (  / \--   --/'._  )                                  | Atk: " + EnemyDamage[0] + @"     |          |");
-            Console.WriteLine(@"|         \-;_/\__;__/ _/ _/                                   | Def: " + EnemyDifesa[0] + @"     |          |");
+            Console.WriteLine(@"|         / ' _        )   \                                   | PV: " + enemies[idMostro].HealthPoints + @"     |          |");
+            Console.WriteLine(@"|        (  / \--   --/'._  )                                  | Atk: " + enemies[idMostro].Damage + @"     |          |");
+            Console.WriteLine(@"|         \-;_/\__;__/ _/ _/                                   | Def: " + enemies[idMostro].Difesa + @"     |          |");
             Console.WriteLine(@"|          '._}|==o==\{_\/                                      ------------           |");
             Console.WriteLine(@"|           /  /-._.--\ \_                 ____________________________________________|");
             Console.WriteLine(@"|          // /   /|   \ \ \              |                                            |");
@@ -341,15 +213,15 @@ namespace GraficaTestuale
 
             //Console.ReadKey();
         }
-        static void GrigliaCombattimentoTurnoEnemy(int[] EnemyHealtPoints, int[] EnemyDamage, int[] EnemyDifesa, int PlayerHp, int PlayerDamage, int PlayerDifesa, string AzioneEnemy, string AzioneEnemySpiegaz)
+        static void GrigliaCombattimentoTurnoEnemy(Enemy[] enemies, Player player,int idMostro,  string AzioneEnemy)
         {
             Console.WriteLine(@" ______________________________________________________________________________________");
             Console.WriteLine(@"|                                                                                      |");
             Console.WriteLine(@"|            ------------                                           _____              |");
             Console.WriteLine(@"|           | Giocatore1 |                                      .-,;='';_),-.          |");
-            Console.WriteLine(@"|           | PV: " + PlayerHp + @"      |                                       \_\(),()/_/           |  ");
-            Console.WriteLine(@"|           | Atk: " + PlayerDamage + @"     |                                         (,___,)             |  ");
-            Console.WriteLine(@"|           | Def: " + PlayerDifesa + @"    |                                        ,-/`~`\-,___         |");
+            Console.WriteLine(@"|           | PV: " + player.HealthPoints + @"      |                                       \_\(),()/_/           |  ");
+            Console.WriteLine(@"|           | Atk: " + player.Damage + @"     |                                         (,___,)             |  ");
+            Console.WriteLine(@"|           | Def: " + player.Difesa + @"    |                                        ,-/`~`\-,___         |");
             Console.WriteLine(@"|            ------------                                        / /).:.('--._)        |");
             Console.WriteLine(@"|                                                               {_[ (_,_)              |");
             Console.WriteLine(@"|                 .=.,                                              | Y |              |");
@@ -357,9 +229,9 @@ namespace GraficaTestuale
             Console.WriteLine(@"|             __ | _ /                                                                 |");
             Console.WriteLine(@"|           .'-'-._ /-'-._                                      ------------           |");
             Console.WriteLine(@"|          / ..           \                                    |   Bandito  |          |");
-            Console.WriteLine(@"|         / ' _        )   \                                   | PV: " + EnemyHealtPoints[0] + @"      |          |");
-            Console.WriteLine(@"|        (  / \--   --/'._  )                                  | Atk: " + EnemyDamage[0] + @"     |          |");
-            Console.WriteLine(@"|         \-;_/\__;__/ _/ _/                                   | Def: " + EnemyDifesa[0] + @"     |          |");
+            Console.WriteLine(@"|         / ' _        )   \                                   | PV: " + enemies[idMostro].HealthPoints + @"      |          |");
+            Console.WriteLine(@"|        (  / \--   --/'._  )                                  | Atk: " + enemies[idMostro].Damage + @"     |          |");
+            Console.WriteLine(@"|         \-;_/\__;__/ _/ _/                                   | Def: " + enemies[idMostro].Difesa + @"     |          |");
             Console.WriteLine(@"|          '._}|==o==\{_\/                                      ------------           |");
             Console.WriteLine(@"|           /  /-._.--\ \_                                                             |");
             Console.WriteLine(@"|          // /   /|   \ \ \               ____________________________________________|");
@@ -374,6 +246,98 @@ namespace GraficaTestuale
 
 
             //Console.ReadKey();
+        }
+        static void Combattimento(Enemy[] enemies, Player player,int idMostro,int ToccaA,string AzioneEnemySpiegaz)
+        {
+            
+            string AzionePlayer = "";
+            string AzioneEnemy = "";
+            while (enemies[0].HealthPoints > 0)
+            {
+                if (ToccaA == 0)
+                {
+                    Console.Clear();
+                    GrigliaCombattimentoTurnoGiocatore(enemies, player,idMostro);
+                    Console.WriteLine(@"|                                                                                      |");
+                    Console.WriteLine(@"|                                                                                      |");
+                    Console.WriteLine(@"|______________________________________________________________________________________|");
+                    Console.SetCursorPosition(3, 29);
+                    AzionePlayer = Console.ReadLine();
+
+                    if (AzionePlayer == "1")
+                    {
+                        enemies[0].HealthPoints = enemies[0].HealthPoints - player.Damage;
+                        ToccaA = 1;
+                    }
+                    else if (AzionePlayer == "2")
+                    {
+                        player.Difesa = player.Difesa + 5;
+                        ToccaA = 1;
+                    }
+                    else if (AzionePlayer == "3")
+                    {
+                        player.HealthPoints = player.HealthPoints + 10;
+                        ToccaA = 1;
+                    }
+                    else if (AzionePlayer == "4")
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Ti credi spiritoso? Già tanto che hai una spada rotta sei ignorante come una capra e parli a mala pena la tua lingua");
+                        ToccaA = 0;
+                        Console.ReadKey();
+                    }
+                    else if (AzionePlayer == "5")
+                    {
+                        Console.WriteLine("Bravo sei saggio, cosi porti a casa la pellaccia!");
+                        break;
+                    }
+                }
+                else if (ToccaA == 1)
+                {
+                    Console.Clear();
+                    if (enemies[0].HealthPoints < 30)
+                    {
+                        AzioneEnemy = "Curarsi";
+                        AzioneEnemySpiegaz = "Il nemico sta prendendo schiaffi quindi decide di curarsi";
+                        enemies[0].HealthPoints = enemies[0].HealthPoints + 5;
+                    }
+                    else
+                    {
+                        AzioneEnemy = "Attaccare";
+                        AzioneEnemySpiegaz = "Il Nemico ti attacca e ti ferisce. Perdi 3 PV";
+                        player.HealthPoints = player.HealthPoints - 3;
+                    }
+
+
+                    GrigliaCombattimentoTurnoEnemy(enemies, player,idMostro, AzioneEnemy);
+                    Console.WriteLine(@"|                                                                                      |");
+                    Console.WriteLine(@"|  " + AzioneEnemySpiegaz + "                                       |");
+                    Console.WriteLine(@"|______________________________________________________________________________________|");
+                    Console.SetCursorPosition(2, 29);
+                    Console.ReadKey();
+                    ToccaA = 0;
+                }
+            }
+
+
+
+            if (AzionePlayer == "1")
+            {
+                Console.Clear();
+                Console.WriteLine("Bravo hai ucciso per la prima volta una persona.");
+                Console.WriteLine("Frughi nelle sue tasche e trovi 150 monete d'oro");
+                Console.ReadKey();
+            }
+            else if (AzionePlayer == "5")
+            {
+                Console.Clear();
+                Console.WriteLine("Sei riuscito per un pelo a scappare, solo perchè era leggermente gobbo...");
+                Console.ReadKey();
+            }
+            Console.Clear();
+            Console.WriteLine("Preferisci andare al negozio a rifornirti?");
+            Console.ReadKey();
+
         }
     }
 }

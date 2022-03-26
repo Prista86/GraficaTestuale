@@ -18,7 +18,7 @@ namespace GraficaTestuale
 
 
         public void Attack() { }
-        public void Heal () { }
+        public void Heal() { }
 
         public void VediEquip()
         {
@@ -26,8 +26,8 @@ namespace GraficaTestuale
             Console.WriteLine("Armatura: " + this.Armatura);
             Console.WriteLine("Arma: " + this.Arma);
             Console.WriteLine("Come statistiche sei cosi messo:");
-            Console.WriteLine("PV: "+this.HealthPoints);
-            Console.WriteLine("Atk: "+ this.Damage);
+            Console.WriteLine("PV: " + this.HealthPoints);
+            Console.WriteLine("Atk: " + this.Damage);
             Console.WriteLine("Def:" + this.Difesa);
             Console.WriteLine("Hai nel borsello: " + this.Gold + " monete d'oro");
         }
