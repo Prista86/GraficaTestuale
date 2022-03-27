@@ -5,10 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 
-
-
-/*
-         esercizio cattivo per sadomasochisti ]:-)
+/*  Esercizio cattivo per sadomasochisti ]:-)
             - creare un gioco di ruolo tesuale con:
                 - classe Player con:
                     - properties:
@@ -43,8 +40,7 @@ using System.Threading;
                 nuove armi o aumentare le proprie statistiche
                 - decidere le condizioni finali di vittoria, quali un tot di
                 Oro da raggiungere, un tot di nemici da uccidere, uno specifico
-                nemico da uccidere
-         */
+                nemico da uccidere  */
 
 namespace GraficaTestuale
 {
