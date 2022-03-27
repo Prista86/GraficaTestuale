@@ -50,27 +50,23 @@ namespace GraficaTestuale
 {
     class Program
     {
-
         static void Main(string[] args)
         {
             int width = 130;
             int height = 35;
             Console.SetWindowSize(width, height);
-
-            string Scelta = "";
+            string Scelta;
             //string Risposta = "";
             int ToccaA = 0;
-            int idMostro = 0;
+            int idMostro;
             double potMostro = 1;
-
             string AzioneEnemySpiegaz = "";
-
 
             Player player = new Player();
             player.Nome = "";
             player.PuntiVita = 150;
             player.Attacco = 100;
-            player.AttaccoM = 0;
+            //player.AttaccoM = 0;
             player.Difesa = 80;
             player.DannoArma = 15;
             player.DannoMagico = 0;
@@ -96,17 +92,13 @@ namespace GraficaTestuale
                 enemy.Loot = 350 + (i * 10);
                 enemy.Pozioni = 1 + (i * 2);
                 potMostro *= 1.3;
-
                 enemies[i] = enemy;
             }
-
-
 
             Console.WriteLine("Benvenuto nel mio primo gdr testuale!");
             Console.WriteLine("Quale è il tuo Nome coraggioso eroe?!!!");
             player.Nome = "Luca";
             player.Nome = Console.ReadLine();
-
             Console.WriteLine("Ottimo " + player.Nome + " !!! Indubbiamente sarai destinato a grandiosi atti eroici!!! 'Invio'");
             Console.ReadKey();
             Console.WriteLine("Oh!! Sei appena stato convocato dal Re Maccio per una nuova avventura!!");
@@ -159,7 +151,6 @@ namespace GraficaTestuale
                         Console.WriteLine("Quindi vediamo un attimo come sei messo. 'Invio'");
                         Console.ReadKey();
                         player.VediEquip();
-
                     }
                     Console.Clear();
                     Console.WriteLine();
@@ -189,7 +180,6 @@ namespace GraficaTestuale
                         }
                         Combattimento(enemies, player, idMostro, ToccaA, AzioneEnemySpiegaz);
                     }
-
                     Console.Clear();
                     Console.WriteLine("Bravo " + player.Nome + " è stata dura ma sei riuscito a salvare la pellaccia!!! ");
                     Console.WriteLine("Vuoi tornare in negozio e prepararti come si deve???");
@@ -212,7 +202,7 @@ namespace GraficaTestuale
                     Console.ReadKey();
                     idMostro = 1;
                     enemies[idMostro].PuntiVita += 160;
-                    enemies[idMostro].Nome = "Frat Bandito";
+                    enemies[idMostro].Nome = "FraBand";
                     player.PuntiVita = 150;
                     while (enemies[idMostro].PuntiVita > 1)
                     {
@@ -224,10 +214,6 @@ namespace GraficaTestuale
                         Combattimento(enemies, player, idMostro, ToccaA, AzioneEnemySpiegaz);
 
                     }
-
-
-
-
                     Console.Clear();
                     Console.WriteLine("Bravo " + player.Nome + " è stata dura ma sei riuscito a salvare la pellaccia!!! ");
                     Console.WriteLine("Ora che hai qualche soldino in più vuoi prendere qualcosa per non prenderti gli schiaffi dal Drago??");
@@ -256,12 +242,10 @@ namespace GraficaTestuale
                     Console.WriteLine("' bene " + player.Nome + " , avevo fame e ora ti mangio' e inizia a correrti in contro!!!");
                     Console.WriteLine("...Sei obbligato a combattere non puoi scappare");
                     Console.ReadKey();
-
                     idMostro = 2;
                     player.PuntiVita = 150;
                     enemies[idMostro].PuntiVita += 200;
-                    enemies[idMostro].Nome = "Drago";
-
+                    enemies[idMostro].Nome = "Drago  ";
                     Combattimento(enemies, player, idMostro, ToccaA, AzioneEnemySpiegaz);
                     Console.Clear();
                     Console.WriteLine("Bravissimo " + player.Nome + " !! Hai ammazzato il drago! Ora puoi salvare la principessa!!");
@@ -270,22 +254,16 @@ namespace GraficaTestuale
                     Console.WriteLine("Arrivati al paesaggio correte dal Re che è felicissimo nel veder tornata la sua amata figlia");
                     Console.WriteLine("Il re ti ringrazia tanto e ti regala altre 5 mo 'Invio'");
                     Console.ReadKey();
-                    player.Oro += 5;                    
+                    player.Oro += 5;
                     Console.Clear();
                     Console.SetCursorPosition(56, 15);
                     Console.WriteLine("Bravo hai vinto.");
                     Console.ReadKey();
-                    System.Environment.Exit(0);                    
+                    System.Environment.Exit(0);
                 }
-
-
-
-
                 //FINE STORIA
                 //FINE STORIA
                 //FINE STORIA
-
-
 
                 else                                                                           // No salvare la principessa
                 {
@@ -329,9 +307,9 @@ namespace GraficaTestuale
             Console.WriteLine(@"|             __ | _ /                                                                 |");
             Console.WriteLine(@"|           .'-'-._ /-'-._                                      ------------           |");
             Console.WriteLine(@"|          / ..           \                                    |   " + enemies[idMostro].Nome + "  |          |");
-            Console.WriteLine(@"|         / ' _        )   \                                   | PV: " + enemies[idMostro].PuntiVita + @"     |          |");
-            Console.WriteLine(@"|        (  / \--   --/'._  )                                  | Atk: " + enemies[idMostro].Attacco + @"    |          |");
-            Console.WriteLine(@"|         \-;_/\__;__/ _/ _/                                   | Def: " + enemies[idMostro].Difesa + @"    |          |");
+            Console.WriteLine(@"|         / ' _        )   \                                   | PV: " + enemies[idMostro].PuntiVita + @"    |          |");
+            Console.WriteLine(@"|        (  / \--   --/'._  )                                  | Atk: " + enemies[idMostro].Attacco + @"   |          |");
+            Console.WriteLine(@"|         \-;_/\__;__/ _/ _/                                   | Def: " + enemies[idMostro].Difesa + @"   |          |");
             Console.WriteLine(@"|          '._}|==o==\{_\/                                      ------------           |");
             Console.WriteLine(@"|           /  /-._.--\ \_                 ____________________________________________|");
             Console.WriteLine(@"|          // /   /|   \ \ \              |                                            |");
@@ -361,9 +339,9 @@ namespace GraficaTestuale
             Console.WriteLine(@"|             __ | _ /                                                                 |");
             Console.WriteLine(@"|           .'-'-._ /-'-._                                      ------------           |");
             Console.WriteLine(@"|          / ..           \                                    |   " + enemies[idMostro].Nome + "  |          |");
-            Console.WriteLine(@"|         / ' _        )   \                                   | PV: " + enemies[idMostro].PuntiVita + @"     |          |");
+            Console.WriteLine(@"|         / ' _        )   \                                   | PV: " + enemies[idMostro].PuntiVita + @"    |          |");
             Console.WriteLine(@"|        (  / \--   --/'._  )                                  | Atk: " + enemies[idMostro].Attacco + @"   |          |");
-            Console.WriteLine(@"|         \-;_/\__;__/ _/ _/                                   | Def: " + enemies[idMostro].Difesa + @"    |          |");
+            Console.WriteLine(@"|         \-;_/\__;__/ _/ _/                                   | Def: " + enemies[idMostro].Difesa + @"   |          |");
             Console.WriteLine(@"|          '._}|==o==\{_\/                                      ------------           |");
             Console.WriteLine(@"|           /  /-._.--\ \_                                                             |");
             Console.WriteLine(@"|          // /   /|   \ \ \               ____________________________________________|");
@@ -379,19 +357,12 @@ namespace GraficaTestuale
         }
         static void Combattimento(Enemy[] enemies, Player player, int idMostro, int ToccaA, string AzioneEnemySpiegaz)
         {
-            //enemies[idMostro].PuntiVita = 0;
-            //double danno = 0;
-            //int arrotondo = 0;
-
-            //double dannoMagico = 0;
             string playerDifesa = "";
             string Scelta;
             string AzionePlayer = "";
             string AzioneEnemy = "";
             while (enemies[idMostro].PuntiVita > 0)
             {
-                //danno = 0;
-                //arrotondo = 0;
                 if (ToccaA == 0)
                 {
                     if (playerDifesa == "braccia")
@@ -466,7 +437,6 @@ namespace GraficaTestuale
                             Console.SetCursorPosition(35, 29);
                             Console.ReadKey();
                         }
-
                     }
                     else if (AzionePlayer == "4")
                     {
@@ -486,7 +456,7 @@ namespace GraficaTestuale
                             Console.WriteLine("Blateri cose strane, lanci una palla di fuoco e gli fai un male cane");
                             Console.SetCursorPosition(3, 30);
                             player.MagicAttack(enemies, idMostro);
-                            Console.WriteLine($"Attacchi {enemies[idMostro].Nome} e lo colpisci con {player.Magia} facendogli {player.DannoArrotondato} Danni. ");                            
+                            Console.WriteLine($"Attacchi {enemies[idMostro].Nome} e lo colpisci con {player.Magia} facendogli {player.DannoArrotondato} Danni. ");
                             Console.ReadKey();
                         }
                     }
@@ -505,7 +475,6 @@ namespace GraficaTestuale
                             Console.Clear();
                             Console.WriteLine("Bravo sei saggio, cosi porti a casa la pellaccia!");
                             Console.WriteLine("Sei riuscito a scappare per un pelo... vuoi passare dal negozio e darti una sistemata? 'S/N'");
-                            Scelta = "N";
                             Scelta = Console.ReadLine();
                             if (Scelta == "S")
                             {
@@ -520,8 +489,6 @@ namespace GraficaTestuale
                             }
                             break;
                         }
-
-
                     }
                     if (AzionePlayer != "1" && AzionePlayer != "2" && AzionePlayer != "3" && AzionePlayer != "4" && AzionePlayer != "5")
                     {
@@ -602,16 +569,15 @@ namespace GraficaTestuale
                     ToccaA = 0;
                 }
             }
-
             if (AzionePlayer == "1" || AzionePlayer == "4")
             {
                 Console.Clear();
                 Console.WriteLine("Hai eliminato il " + enemies[idMostro].Nome + ".");
-                if (idMostro==1)
+                if (idMostro == 1)
                 {
                     enemies[idMostro].Loot += 300;
                 }
-                else if (idMostro==0)
+                else if (idMostro == 0)
                 {
                     enemies[idMostro].Loot += 100;
                 }
@@ -622,7 +588,7 @@ namespace GraficaTestuale
         }
         static void Negozio(Player player)
         {
-            string Scelta = "";
+            string Scelta;
             int SceltaNum;
             Console.WriteLine("Appena entrato il simpatico negoziante ti chiede se vuoi acquistare qualcosa!!");
             Console.WriteLine("Vuoi vedere la merce che vende?");
@@ -651,22 +617,18 @@ namespace GraficaTestuale
                     Console.WriteLine(" 5.Cura             :50 Mo             7.Palla di fuoco          :70 Mo");
                     Console.WriteLine("");
                     Console.WriteLine("                                       8.Magia sali di livello   :1000 Mo          9.Visiona Equipaggiamento");
-                    Console.WriteLine("");                    
+                    Console.WriteLine("");
                     Console.WriteLine("");
                     Console.WriteLine("");
                     Console.WriteLine(" Di quale oggetto vuoi le infomrazioni? 'digita 11 per uscire dal negozio'");
                     Console.WriteLine("");
                     Console.SetCursorPosition(3, 26);
-                    bool n;
                     Scelta = Console.ReadLine();
-                    n = int.TryParse(Scelta, out SceltaNum);
-                    //SceltaNum = int.Parse(Scelta);
-
+                    bool n = int.TryParse(Scelta, out SceltaNum);
                     switch (SceltaNum)
                     {
                         case 1:
                             Console.WriteLine("Spada fortissima di WoW, atk + 50");
-
                             Console.WriteLine("Vuoi acquistarla?");
                             Scelta = "";
                             Scelta = SioNo(Scelta);
@@ -722,7 +684,6 @@ namespace GraficaTestuale
                                         Console.ReadKey();
                                     }
                                 }
-
                             }
                             continue;
                         case 3:
@@ -845,7 +806,7 @@ namespace GraficaTestuale
                                     if (player.Oro > 69)
                                     {
                                         player.Magia = "Palla di Fuoco";
-                                        player.AttaccoM = 110;
+                                        //player.AttaccoM = 110;
                                         player.DannoMagico = 27;
                                         player.Oro -= 70;
                                     }
@@ -887,8 +848,6 @@ namespace GraficaTestuale
                                     Console.WriteLine("'Torna quando sarai equipaggiato come si deve' 'Invio'");
                                     Console.ReadKey();
                                 }
-
-
                             }
                             continue;
                         case 9:
@@ -907,20 +866,9 @@ namespace GraficaTestuale
                             Console.WriteLine("Devi inserire un numero da 1 a 11");
                             Console.ReadKey();
                             continue;
-
                     }
 
                 } while (SceltaNum < 100);
-
-
-
-
-
-
-
-
-
-
             }
             else
             {
@@ -929,8 +877,6 @@ namespace GraficaTestuale
                 Console.ReadKey();
                 player.VediEquip();
             }
-
-
         }
         static string SioNo(string Scelta)
         {
