@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraficaTestuale
 {
-    internal class Enemy
+    class Enemy
     {
         public int Id { get; set; }
         public string Nome { get; set; }
@@ -16,13 +16,14 @@ namespace GraficaTestuale
         public double Difesa { get; set; }
         public double Attacco  { get; set; }
         public int Pozioni { get; set; }
+        public int DannoArrotondato { get; set; }
+
 
         public void Attack(Player player) {
-            double danno;
-            int arrotondo;
-            danno = (this.Attacco / player.Difesa) * this.DannoArma;
-            arrotondo = (int)Math.Round(danno);
-            player.PuntiVita -=arrotondo;
+            double danno;            
+            danno = ( this.Attacco/ player.Difesa) * this.DannoArma;
+            this.DannoArrotondato = (int)Math.Round(danno);
+            player.PuntiVita -= this.DannoArrotondato;
         }
         public void Heal() {
             this.PuntiVita +=40;
