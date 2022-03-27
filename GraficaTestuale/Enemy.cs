@@ -12,7 +12,7 @@ namespace GraficaTestuale
         public string Nome { get; set; }
         public double PuntiVita { get; set; }
         public double DannoArma { get; set; }
-        public double Loot { get; set; }
+        public int Loot { get; set; }
         public double Difesa { get; set; }
         public double Attacco  { get; set; }
         public int Pozioni { get; set; }
@@ -26,7 +26,7 @@ namespace GraficaTestuale
             player.PuntiVita -= this.DannoArrotondato;
         }
         public void Heal() {
-            this.PuntiVita +=40;
+            this.PuntiVita +=25;
             this.Pozioni--;
         }
     }

@@ -38,6 +38,10 @@ namespace GraficaTestuale
             this.DannoArrotondato = (int)Math.Round(danno);
             enemies[idMostro].PuntiVita -= this.DannoArrotondato;
         }
+        public void DefenseStance()
+        {
+
+        }
         public void MagicAttack (Enemy[] enemies, int IdMostro)
         {
             danno = (this.AttaccoM / enemies[0].Difesa) * this.DannoMagico;
@@ -45,7 +49,7 @@ namespace GraficaTestuale
             enemies[IdMostro].PuntiVita -=this.DannoArrotondato;
         }
         public void Heal() {
-            this.PuntiVita +=20;
+            this.PuntiVita +=60;
             this.Pozioni--;
 
         }
@@ -66,9 +70,9 @@ namespace GraficaTestuale
             Console.WriteLine("Punti Vita: " + this.PuntiVita);
             Console.WriteLine("Danno Arma: " + this.DannoArma);
             Console.WriteLine("Danno Magico: " + this.DannoMagico);
-            Console.WriteLine("Attacco:" + this.Attacco);
-            Console.WriteLine("Difesa:" + this.Difesa);
-
+            Console.WriteLine("Attacco: " + this.Attacco);
+            Console.WriteLine("Attacco magico: " + this.AttaccoM);
+            Console.WriteLine("Difesa: " + this.Difesa);
             Console.WriteLine("Hai nel borsello: " + this.Oro + " monete d'oro");
             Console.WriteLine("'Invio'");
             Console.ReadKey();
