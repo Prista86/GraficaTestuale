@@ -22,11 +22,30 @@ namespace GraficaTestuale
 
         public double AttaccoM { get; set; }
         public int Pozioni { get; set; }
+
+        double danno=0;
+        int arrotondo=0;
+        int idMostro = 0;
         
 
 
-        public void Attack() { }
-        public void Heal() { }
+        public void Attack(Enemy[] enemies) {
+            danno = (this.Attacco / enemies[idMostro].Difesa) *this.DannoArma;
+            arrotondo = (int)Math.Round(danno);
+            enemies[idMostro].PuntiVita = enemies[idMostro].PuntiVita - arrotondo;
+        }
+        public void MagicAttack (Enemy[] enemies)
+        {
+            danno = (this.AttaccoM / enemies[idMostro].Difesa) * this.DannoMagico;
+            arrotondo = (int)Math.Round(danno);
+            enemies[idMostro].PuntiVita = enemies[idMostro].PuntiVita - arrotondo;
+        }
+        public void Heal() {
+            this.PuntiVita +=20;
+            this.Pozioni--;
+
+        }
+       
 
         public void VediEquip()
         {

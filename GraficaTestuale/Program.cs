@@ -49,12 +49,14 @@ namespace GraficaTestuale
 {
     internal class Program
     {
+        
         static void Main(string[] args)
         {
 
             string Scelta = "S";
             int ToccaA = 0;
             int idMostro = 0;
+            double potMostro = 1;
 
             string AzioneEnemySpiegaz = "";
 
@@ -67,28 +69,26 @@ namespace GraficaTestuale
             player.Difesa = 70;
             player.DannoArma = 15;
             player.DannoMagico = 0;
-            player.Oro = 1;
+            player.Oro = 10000;
             player.Arma = "Spada brutta";
             player.Armatura = "Sacco di patate puzzolente";
             player.Scudo = "";
             player.Magia = "Non conosci nulla";
             player.Pozioni = 3;
 
-
-
-
             Enemy[] enemies = new Enemy[3];
 
             for (int i = 0; i < 3; i++)
             {
                 Enemy enemy = new Enemy();
-                enemy.id = i;
+                enemy.Id = i;
                 enemy.Nome = "Enemy" + i;
-                enemy.PuntiVita = 200;
-                enemy.Attacco = 100;
-                enemy.Difesa = 70;
-                enemy.DannoArma = 5;
-                enemy.Loot = 10;
+                enemy.PuntiVita = 100*potMostro;
+                enemy.Attacco = 100 * potMostro;
+                enemy.Difesa = 70 * potMostro;
+                enemy.DannoArma = 10 * potMostro;
+                enemy.Loot = 10 + (i*5);
+                enemy.Pozioni = 1+(i*2);
 
                 enemies[i] = enemy;
             }
@@ -128,22 +128,22 @@ namespace GraficaTestuale
                     Console.WriteLine("..zZz..' Dormita time'");
                     //Console.ReadKey();
                     Console.WriteLine("Ottimo sei riposato e rifocillato con una ottima colazione vegana a base di pane e acqua!!! Sei proprio pronto per partire!");
-                    //Console.WriteLine("Prima di partire vuoi per caso passare dal negozio ad acquistare qualcosa per il viaggio?");
+                    Console.WriteLine("Prima di partire vuoi per caso passare dal negozio ad acquistare qualcosa per il viaggio?");
 
-                    //Scelta = "S";
-                    //Scelta = Console.ReadLine();
-                    //if (Scelta == "S")                                                                                       //Negozio??
-                    //{
-                    //    Negozio(player);
-                    //}
-                    //else
-                    //{
-                    //    Console.WriteLine("Grande sei fortissimo già cosi come sei!'No non è vero, non sei assolutamente preparato per nulla, neanche per andare a fare la spesa al conad'");
-                    //    Console.ReadKey();
-                    //}
-                    //Console.WriteLine();
-                    //Console.WriteLine("Grandioso!!! Stai per intraprendere la tua prima avventura!! quindi è giusto vedere 'come sei messo'");
-                    //player.VediEquip();
+                    Scelta = "S";
+                    Scelta = Console.ReadLine();
+                    if (Scelta == "S")                                                                                       //Negozio??
+                    {
+                        Negozio(player);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Grande sei fortissimo già cosi come sei!'No non è vero, non sei assolutamente preparato per nulla, neanche per andare a fare la spesa al conad'");
+                        Console.ReadKey();
+                    }
+                    Console.WriteLine();
+                    Console.WriteLine("Grandioso!!! Stai per intraprendere la tua prima avventura!! quindi è giusto vedere 'come sei messo'");
+                    player.VediEquip();
 
                     Console.WriteLine("Ora puoi veramente partire verso la tana del drago che puoi già vedere in lontananza in cima alla collina!");
                     //Console.ReadKey();
@@ -162,7 +162,7 @@ namespace GraficaTestuale
                     }
 
                     idMostro = 0;
-                    Combattimento(enemies, player, idMostro, ToccaA, AzioneEnemySpiegaz);
+                    Combattimento(enemies,enemy, player,idMostro, ToccaA, AzioneEnemySpiegaz);
                     Console.WriteLine("Bravo è stata dura ma sei riuscito a salvare la pellaccia!!! ");
                     Console.WriteLine("Ora che sei pieno di Cash$ vuoi tornare in negozio e prepararti come si deve???");
                     Scelta = "S";
@@ -176,6 +176,16 @@ namespace GraficaTestuale
                     {
                         Console.WriteLine("Va bene ma potresti, forse , trovare qualche difficoltà in più...");
                     }
+
+                    Console.WriteLine("Ottimo hai affontato il tuo primo combattimento e ora sei pronto per salvare la principessa!!");
+                    Console.WriteLine("Procedi per il sentieri di prima e pian piano arrivi ad una grotta molto grande, subito leggi un cartello con scritto;");
+                    Console.WriteLine("ATTENZIONE NON ENTRARE, FORSE DRAGO!");
+                    Console.WriteLine("Ma tu sei coraggioso ed entri se no il Re Maccio ti ammazza comunque.");
+                    Console.WriteLine("Appena entri vedi che c'è un bruttissimno ceffo...");
+                    Console.WriteLine("Ti urla correndoti incontro dicendoti:");
+                    Console.WriteLine("Tu hai ammazzato mio fratello ora lo vendicherò");
+                    Console.WriteLine("Non puoi scappare sei obbligato a difenderti...");
+
 
 
 
@@ -206,9 +216,9 @@ namespace GraficaTestuale
             Console.WriteLine(@" ______________________________________________________________________________________");
             Console.WriteLine(@"|                                                                                      |");
             Console.WriteLine(@"|            ------------                                           _____              |");
-            Console.WriteLine(@"|           | Giocatore1 |                                      .-,;='';_),-.          |");
-            Console.WriteLine(@"|           | PV: " + player.PuntiVita + @"     |                                       \_\(),()/_/           |  ");
-            Console.WriteLine(@"|           | Atk: " + player.Attacco + @"     |                                         (,___,)             |  ");
+            Console.WriteLine(@"|           | Giocatore1 |                                      .-,;='';=),-.          |");
+            Console.WriteLine(@"|           | PV: " + player.PuntiVita + @"    |                                       \_\(),()/_/           |  ");
+            Console.WriteLine(@"|           | Atk: " + player.Attacco + @"   |                                         (,___,)             |  ");
             Console.WriteLine(@"|           | Def: " + player.Difesa + @"    |                                        ,-/`~`\-,___         |");
             Console.WriteLine(@"|            ------------                                        / /).:.('--._)        |");
             Console.WriteLine(@"|                                                               {_[ (_,_)              |");
@@ -217,9 +227,9 @@ namespace GraficaTestuale
             Console.WriteLine(@"|             __ | _ /                                                                 |");
             Console.WriteLine(@"|           .'-'-._ /-'-._                                      ------------           |");
             Console.WriteLine(@"|          / ..           \                                    |   Bandito  |          |");
-            Console.WriteLine(@"|         / ' _        )   \                                   | PV: " + enemies[idMostro].PuntiVita + @"     |          |");
-            Console.WriteLine(@"|        (  / \--   --/'._  )                                  | Atk: " + enemies[idMostro].DannoArma + @"     |          |");
-            Console.WriteLine(@"|         \-;_/\__;__/ _/ _/                                   | Def: " + enemies[idMostro].Difesa + @"     |          |");
+            Console.WriteLine(@"|         / ' _        )   \                                   | PV: " + enemies[idMostro].PuntiVita + @"    |          |");
+            Console.WriteLine(@"|        (  / \--   --/'._  )                                  | Atk: " + enemies[idMostro].DannoArma + @"    |          |");
+            Console.WriteLine(@"|         \-;_/\__;__/ _/ _/                                   | Def: " + enemies[idMostro].Difesa + @"    |          |");
             Console.WriteLine(@"|          '._}|==o==\{_\/                                      ------------           |");
             Console.WriteLine(@"|           /  /-._.--\ \_                 ____________________________________________|");
             Console.WriteLine(@"|          // /   /|   \ \ \              |                                            |");
@@ -233,14 +243,14 @@ namespace GraficaTestuale
             Console.WriteLine(@"|_________________________________________|____________________________________________|");
             //Console.ReadKey();
         }
-        static void GrigliaCombattimentoTurnoEnemy(Enemy[] enemies, Player player, int idMostro, string AzioneEnemy)
+        static void GrigliaCombattimentoTurnoEnemy(Enemy[] enemies, Player player, int idMostro)
         {
             Console.WriteLine(@" ______________________________________________________________________________________");
             Console.WriteLine(@"|                                                                                      |");
             Console.WriteLine(@"|            ------------                                           _____              |");
             Console.WriteLine(@"|           | Giocatore1 |                                      .-,;='';_),-.          |");
-            Console.WriteLine(@"|           | PV: " + player.PuntiVita + @"      |                                       \_\(),()/_/           |  ");
-            Console.WriteLine(@"|           | Atk: " + player.Attacco + @"     |                                         (,___,)             |  ");
+            Console.WriteLine(@"|           | PV: " + player.PuntiVita + @"    |                                       \_\(),()/_/           |  ");
+            Console.WriteLine(@"|           | Atk: " + player.Attacco + @"   |                                         (,___,)             |  ");
             Console.WriteLine(@"|           | Def: " + player.Difesa + @"    |                                        ,-/`~`\-,___         |");
             Console.WriteLine(@"|            ------------                                        / /).:.('--._)        |");
             Console.WriteLine(@"|                                                               {_[ (_,_)              |");
@@ -249,33 +259,34 @@ namespace GraficaTestuale
             Console.WriteLine(@"|             __ | _ /                                                                 |");
             Console.WriteLine(@"|           .'-'-._ /-'-._                                      ------------           |");
             Console.WriteLine(@"|          / ..           \                                    |   Bandito  |          |");
-            Console.WriteLine(@"|         / ' _        )   \                                   | PV: " + enemies[idMostro].PuntiVita + @"      |          |");
-            Console.WriteLine(@"|        (  / \--   --/'._  )                                  | Atk: " + enemies[idMostro].Attacco + @"     |          |");
-            Console.WriteLine(@"|         \-;_/\__;__/ _/ _/                                   | Def: " + enemies[idMostro].Difesa + @"     |          |");
+            Console.WriteLine(@"|         / ' _        )   \                                   | PV: " + enemies[idMostro].PuntiVita + @"     |          |");
+            Console.WriteLine(@"|        (  / \--   --/'._  )                                  | Atk: " + enemies[idMostro].Attacco + @"   |          |");
+            Console.WriteLine(@"|         \-;_/\__;__/ _/ _/                                   | Def: " + enemies[idMostro].Difesa + @"    |          |");
             Console.WriteLine(@"|          '._}|==o==\{_\/                                      ------------           |");
             Console.WriteLine(@"|           /  /-._.--\ \_                                                             |");
             Console.WriteLine(@"|          // /   /|   \ \ \               ____________________________________________|");
             Console.WriteLine(@"|         / | |   | \;  |  \ \            |                                            |");
             Console.WriteLine(@"|        / /  | :/   \: \   \_\           |  TOCCA AL NEMICO!!                         |");
             Console.WriteLine(@"|       /  |  /.'|   /: |    \ \          |                                            |");
-            Console.WriteLine($@"|       |  |  |--| . |--|     \_\         |  Il nemico decide di: {AzioneEnemy}            |");
+            Console.WriteLine(@"|       |  |  |--| . |--|     \_\         |                                            |");
             Console.WriteLine(@"|      / _ /   \ | : | /___--._) \        |                                            |");
             Console.WriteLine(@"|     |_(---'-| >-'-| |       '-'         |                                            |");
             Console.WriteLine(@"|              /_ /  \_\                  |                                            |");
             Console.WriteLine(@"|_________________________________________|____________________________________________|");
             //Console.ReadKey();
         }
-        static void Combattimento(Enemy[] enemies, Player player, int idMostro, int ToccaA, string AzioneEnemySpiegaz)
+        static void Combattimento(Enemy[] enemies,Enemy enemy, Player player, int idMostro, int ToccaA, string AzioneEnemySpiegaz)
         {
             //enemies[idMostro].PuntiVita = 0;
             double danno = 0;
-            int arrotondo=0;
+            int arrotondo = 0;
+            
             //double dannoMagico = 0;
             string playerDifesa = "";
 
             string AzionePlayer = "";
             string AzioneEnemy = "";
-            while (enemies[0].PuntiVita > 0)
+            while (enemies[idMostro].PuntiVita > 0)
             {
                 danno = 0;
                 arrotondo = 0;
@@ -283,12 +294,12 @@ namespace GraficaTestuale
                 {
                     if (playerDifesa == "braccia")
                     {
-                        player.Difesa = player.Difesa / 1.9;
+                        player.Difesa /=1.2;
                         playerDifesa = "";
                     }
                     else if (playerDifesa == "scudo")
                     {
-                        player.Difesa = player.Difesa / 1.5;
+                        player.Difesa /= 1.5;
                         playerDifesa = "";
                     }
                     Console.Clear();
@@ -301,22 +312,14 @@ namespace GraficaTestuale
                     Console.WriteLine("Digita l'azione da compiere: ");
                     Console.SetCursorPosition(32, 29);
                     AzionePlayer = Console.ReadLine();
-
                     if (AzionePlayer == "1")
-                    {
-                        danno = (player.Attacco / enemies[idMostro].Difesa) * player.DannoArma;
-                        arrotondo = (int)Math.Round(danno);
-                        enemies[idMostro].PuntiVita = enemies[0].PuntiVita - arrotondo;
-                        
-                        
-                        
+                    {                        
+                        player.Attack(enemies);
                         Console.SetCursorPosition(3, 29);
                         Console.WriteLine($"Attacchi {enemies[idMostro].Nome} e lo colpisci con {player.Arma} facendogli {arrotondo} Danni. ");
                         ToccaA = 1;
                         Console.SetCursorPosition(70, 29);
                         Console.ReadKey();
-
-
                     }
                     else if (AzionePlayer == "2")
                     {
@@ -326,7 +329,8 @@ namespace GraficaTestuale
                             Console.WriteLine($"Decidi di non attaccare ma di proteggerti con le braccia,");
                             Console.SetCursorPosition(3, 30);
                             Console.WriteLine($"diminuendo i danni del prossimo attacco.");
-                            player.Difesa = player.Difesa * 1.9;
+                            player.Difesa *=1.2;
+
                             playerDifesa = "braccia";
                             Console.SetCursorPosition(43, 30);
                             Console.ReadKey();
@@ -335,7 +339,7 @@ namespace GraficaTestuale
                         {
                             Console.SetCursorPosition(3, 29);
                             Console.WriteLine($"Decidi di non attaccare ma di proteggerti nascondendoti dietro lo scudo a Torre,diminuendo i danni del prossimo attacco");
-                            player.Difesa = player.Difesa * 1.5;
+                            player.Difesa *=1.5;
                             playerDifesa = "scudo";
                         }
                         ToccaA = 1;
@@ -343,15 +347,21 @@ namespace GraficaTestuale
                     else if (AzionePlayer == "3")
                     {
                         if (player.Pozioni > 0)
-                        {
-                            player.PuntiVita = player.PuntiVita + 20;
-                            player.Pozioni--;
+                        {                            
+                            player.Heal();
+                            Console.SetCursorPosition(3, 29);
+                            Console.WriteLine($"Ti bevi la pozione, fa schifo ma ti senti meglio.");
+                            Console.SetCursorPosition(3, 30);
+                            Console.WriteLine($"Te ne rimangono {player.Pozioni}.");
+                            Console.SetCursorPosition(21, 30);
+                            Console.ReadKey();
                             ToccaA = 1;
                         }
                         else
                         {
                             Console.SetCursorPosition(3, 29);
                             Console.WriteLine("Non hai pozioni con cui curarti.");
+                            Console.SetCursorPosition(35, 29);
                             Console.ReadKey();
                         }
 
@@ -361,7 +371,10 @@ namespace GraficaTestuale
                         if (player.Magia == "Non conosci nulla")
                         {
                             Console.SetCursorPosition(3, 29);
-                            Console.WriteLine("Ti credi spiritoso? Già tanto che hai una spada rotta sei ignorante come una capra e parli a mala pena la tua lingua");
+                            Console.WriteLine($"Ti credi spiritoso? Già tanto che hai una spada rotta sei ignorante");
+                            Console.SetCursorPosition(3, 30);
+                            Console.WriteLine($"come una capra e parli a mala pena la tua lingua.");
+                            Console.SetCursorPosition(55, 30);
                             Console.ReadKey();
                             ToccaA = 0;
                         }
@@ -369,10 +382,7 @@ namespace GraficaTestuale
                         {
                             Console.SetCursorPosition(3, 29);
                             Console.WriteLine("Blateri cose strane, lanci una palla di fuoco e gli fai un male cane");
-                            
-                            danno = (player.AttaccoM / enemies[idMostro].Difesa) * player.DannoMagico;
-                            arrotondo = (int)Math.Round(danno);
-                            enemies[0].PuntiVita = enemies[0].PuntiVita-arrotondo;
+                            player.MagicAttack(enemies);                            
                         }
                     }
                     else if (AzionePlayer == "5")
@@ -387,44 +397,41 @@ namespace GraficaTestuale
                     Console.SetCursorPosition(27, 29);
                     Console.ReadKey();
                 }
-                else if (ToccaA == 1)
+                else if (ToccaA == 1)                                //Attacco del mostro
                 {
                     Console.Clear();
-                    if (enemies[0].PuntiVita < 30)
+                    GrigliaCombattimentoTurnoEnemy(enemies, player, idMostro);
+                    if (enemies[idMostro].Pozioni > 0)
                     {
-                        if (enemies[idMostro].Pozioni > 0)
+                        if (enemies[idMostro].PuntiVita < 30)
                         {
                             AzioneEnemy = "Curarsi";
                             AzioneEnemySpiegaz = "Il nemico sta prendendo schiaffi quindi decide di curarsi";
-                            enemies[0].PuntiVita = enemies[0].PuntiVita + 20;
+                            enemy.Heal();                            
                         }
-
+                        else
+                        {  
+                            enemy.Attack(player);
+                            AzioneEnemy = "Attaccare";                           
+                            AzioneEnemySpiegaz = $"Il Nemico ti attacca e ti ferisce. Perdi {arrotondo} PV.";
+                        }
                     }
                     else
-                    {
-                        danno = (enemies[idMostro].Attacco / player.Difesa) * enemies[idMostro].DannoArma;
-                        arrotondo = (int)Math.Round(danno);
-                        player.PuntiVita = player.PuntiVita -arrotondo;
-                        AzioneEnemy = "Attaccare";
-                        //Console.SetCursorPosition(3, 29);
+                    {                       
+                        enemy.Attack(player);
+                        AzioneEnemy = "Attaccare";                        
                         AzioneEnemySpiegaz = $"Il Nemico ti attacca e ti ferisce. Perdi {arrotondo} PV.";
-                        
                     }
-
-
-                    GrigliaCombattimentoTurnoEnemy(enemies, player, idMostro, AzioneEnemy);                    
+                    Console.WriteLine(@"|                                                                                      |");
+                    Console.WriteLine(@"|  Il nemico decide di: " + AzioneEnemy + "                                                      |");
                     Console.WriteLine(@"|                                                                                      |");
                     Console.WriteLine(@"|  " + AzioneEnemySpiegaz + "                                     |");
-                    Console.WriteLine(@"|                                                                                      |");
                     Console.WriteLine(@"|______________________________________________________________________________________|");
-                    Console.SetCursorPosition(50, 29);
+                    Console.SetCursorPosition(50, 31);
                     Console.ReadKey();
                     ToccaA = 0;
                 }
             }
-
-
-
             if (AzionePlayer == "1")
             {
                 Console.Clear();
@@ -441,8 +448,8 @@ namespace GraficaTestuale
         }
         static void Negozio(Player player)
         {
-            string Scelta = "";
-            int SceltaNum = 0;
+            string Scelta;
+            int SceltaNum;
             Console.WriteLine("Appena entrato il simpatico negoziante ti chiede se vuoi acquistare qualcosa!!");
             Console.WriteLine("Vuoi vedere la merce che vende?");
             Scelta = "S";
@@ -461,8 +468,8 @@ namespace GraficaTestuale
                     Console.WriteLine("2.Ammazzadraghi    :50 Mo         4.Armatura di Pegasus     :50 Mo");
                     Console.WriteLine("");
                     Console.WriteLine("-Pozioni-                         -Incantesimi-");
-                    Console.WriteLine("5. Cura 50  hp     :50 Mo         8.Palla di fuoco          :50 Mo");
-                    Console.WriteLine("                                  7.Magia sali di livello   :50 Mo");
+                    Console.WriteLine("5. Cura 50  hp     :50 Mo         7.Palla di fuoco          :50 Mo");
+                    Console.WriteLine("                                  8.Magia sali di livello   :50 Mo");
                     Console.WriteLine("Di quale oggetto vuoi le infomrazioni? (digita 9 per uscire dal negozio");
 
                     Scelta = Console.ReadLine();
@@ -471,7 +478,7 @@ namespace GraficaTestuale
                     switch (SceltaNum)
                     {
                         case 1:
-                            Console.WriteLine("Spada fortissima di wow, atk + 50");
+                            Console.WriteLine("Spada fortissima di wow, atk + 20");
 
                             Console.WriteLine("Vuoi acquistarla?");
                             Scelta = Console.ReadLine();
@@ -489,7 +496,7 @@ namespace GraficaTestuale
                                         player.Arma = "Frostmourne";
                                         player.DannoArma = 20;
                                         player.Attacco = 120;
-                                        player.Oro = player.Oro - 50;
+                                        player.Oro -=50;
                                         player.VediEquip();
                                     }
                                     else
@@ -502,7 +509,7 @@ namespace GraficaTestuale
                             }
                             continue;
                         case 2:
-                            Console.WriteLine("Spada di Gatsu (prioprio la sua non è una replica), atk + 500");
+                            Console.WriteLine("Spada di Gatsu (prioprio la sua non è una replica), atk + 40");
 
                             Console.WriteLine("Vuoi acquistarla?");
                             Scelta = Console.ReadLine();
@@ -520,7 +527,7 @@ namespace GraficaTestuale
                                         player.Arma = "Ammazzadraghi";
                                         player.DannoArma = 25;
                                         player.Attacco = 140;
-                                        player.Oro = player.Oro - 50;
+                                        player.Oro -=50;
                                         player.VediEquip();
                                     }
                                     else
@@ -549,7 +556,7 @@ namespace GraficaTestuale
                                     {
                                         player.Armatura = "Sacco di Patate pulito e stirato";
                                         player.Difesa = 70;
-                                        player.Oro = player.Oro - 50;
+                                        player.Oro -= 50;
                                         player.VediEquip();
                                     }
                                     else
@@ -561,7 +568,7 @@ namespace GraficaTestuale
                             }
                             continue;
                         case 4:
-                            Console.WriteLine("Con questa sembri un pirla ma ti protegge bene, def+100");
+                            Console.WriteLine("Con questa sembri un pirla ma ti protegge bene, def+40");
                             Console.WriteLine("Vuoi acquistarla?");
                             Scelta = Console.ReadLine();
                             if (Scelta == "S")
@@ -576,8 +583,8 @@ namespace GraficaTestuale
                                     if (player.Oro > 50)
                                     {
                                         player.Armatura = "Armatura di Pegasus";
-                                        player.Difesa = 100;
-                                        player.Oro = player.Oro - 50;
+                                        player.Difesa = 140;
+                                        player.Oro -=50;
                                         player.VediEquip();
                                     }
                                     else
@@ -597,7 +604,7 @@ namespace GraficaTestuale
                                 if (player.Oro > 50)
                                 {
                                     player.Pozioni++;
-                                    player.Oro = -50;
+                                    player.Oro -=50;
                                     player.VediEquip();
                                 }
                                 else
@@ -623,8 +630,8 @@ namespace GraficaTestuale
                                     if (player.Oro > 50)
                                     {
                                         player.Scudo = "Scudo a Torre";
-                                        player.Difesa = player.Difesa + 40;
-                                        player.Oro = -50;
+                                        player.Difesa += 50;
+                                        player.Oro -=50;
                                         player.VediEquip();
                                     }
                                     else
@@ -636,7 +643,7 @@ namespace GraficaTestuale
                             }
                             continue;
                         case 7:
-                            Console.WriteLine("Leggendo questa pergamenta diventi intelligente e spari palle di fuoco da 500 danni");
+                            Console.WriteLine("Leggendo questa pergamenta diventi intelligente e spari palle di fuoco potentissime");
                             Console.WriteLine("Vuoi acquistarla?");
                             Scelta = Console.ReadLine();
                             if (Scelta == "S")
@@ -653,7 +660,7 @@ namespace GraficaTestuale
                                         player.Magia = "Palla di Fuoco";
                                         player.AttaccoM = 200;
                                         player.DannoMagico = 50;
-                                        player.Oro = player.Oro - 50;
+                                        player.Oro -= 50;
                                         player.VediEquip();
                                     }
                                     else
@@ -670,21 +677,31 @@ namespace GraficaTestuale
                             Scelta = Console.ReadLine();
                             if (Scelta == "S")
                             {
-                                if (player.Oro > 1000)
+                                if (player.Arma != "Spada brutta" && player.Armatura != "Sacco di patate puzzolente" && player.Scudo != "")
                                 {
-                                    player.PuntiVita = player.PuntiVita + 100;
-                                    player.Attacco = player.Attacco + 80;
-                                    player.Difesa = player.Difesa + 60;
-                                    player.DannoArma = player.DannoArma + 25;
-                                    player.DannoMagico = player.DannoMagico + 50;
-                                    player.Oro = player.Oro - 1000;
-                                    player.VediEquip();
+                                    if (player.Oro > 1000)
+                                    {
+                                        player.PuntiVita +=200;
+                                        player.Attacco +=80;
+                                        player.Difesa +=60;
+                                        player.DannoArma +=25;
+                                        player.DannoMagico +=50;
+                                        player.Oro -=1000;
+                                        player.VediEquip();
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Non hai abbastanza soldi, vai a picchiare qualcuno");
+                                        Console.ReadKey();
+                                    }
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Non hai abbastanza soldi, vai a picchiare qualcuno");
-                                    Console.ReadKey();
+                                    Console.WriteLine("Non hai abbastanza esperienza per padroneggiare questo potere...");
+                                    Console.WriteLine("Torna quando sarai equipaggiato come si deve");
                                 }
+
+
                             }
                             continue;
                     }
