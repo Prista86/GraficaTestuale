@@ -44,12 +44,12 @@ namespace GraficaTestuale
         }
         public void MagicAttack (Enemy[] enemies, int IdMostro)
         {
-            danno = (this.AttaccoM / enemies[0].Difesa) * this.DannoMagico;
+            danno = (this.Attacco / enemies[0].Difesa) * this.DannoMagico;
             this.DannoArrotondato = (int)Math.Round(danno);
             enemies[IdMostro].PuntiVita -=this.DannoArrotondato;
         }
         public void Heal() {
-            this.PuntiVita +=60;
+            this.PuntiVita +=40;
             this.Pozioni--;
 
         }
