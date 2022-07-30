@@ -1,0 +1,13 @@
+
+
+Negoziante ti saluta ( invio )
+
+Invio durante combattimento
+
+azione 4 incantesimo, passa il turno ?
+
+quando scappi con 5 al primo combattimento per la richiesta negozio veder SioNo
+
+quando scappi e ri attacchi al primo combattimento i pv devon tornare 150. 
+
+Puoi scappare dal drago...

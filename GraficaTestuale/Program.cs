@@ -105,9 +105,9 @@ namespace GraficaTestuale
             {
                 Console.WriteLine("Bene " + player.Nome + " non sei un coniglio!");
                 Console.WriteLine("Dopo averlo atteso 2 ore");
-                for (int i = 0; i < 1; i++)
+                for (int i = 0; i < 8; i++)
                 {
-                    Thread.Sleep(500);
+                    Thread.Sleep(700);
                     Console.Write(".");
                 }
                 Console.WriteLine("'Questa attesa serve per immergerti ancora di più nella storia...' 'Invio'");
@@ -120,7 +120,7 @@ namespace GraficaTestuale
                 Scelta = SioNo(Scelta);
                 if (Scelta == "S")                                                                                               // Andare a salvare la principessa?
                 {
-                    Console.WriteLine("Bene " + player.Nome + " sei coraggioso!!! Ora però è ora di cena quindi andate a mangiare!!! Partirai domani mattina dopo una bella dormita!");
+                    Console.WriteLine("Bene " + player.Nome + " sei coraggioso!!! Ora però è ora di cena quindi andate a mangiare!!!");
                     Console.WriteLine("Partirai domani mattina dopo una bella dormita!");
                     Console.WriteLine("Tanto la grotta dista solo mezzoretta di strada! 'Invio'");
                     Console.ReadKey();
@@ -130,7 +130,7 @@ namespace GraficaTestuale
                     Console.Clear();
                     Console.WriteLine("..zZz..' Dormita time' 'Invio'");
                     Console.ReadKey();
-                    Console.WriteLine("Ottimo " + player.Nome + " sei riposato e rifocillato con una ottima colazione vegana a base di pane e acqua!!! Sei proprio pronto per partire!");
+                    Console.WriteLine("Ottimo " + player.Nome + " sei riposato e rifocillato con una ottima colazione vegana a base di pane e acqua!!!");
                     Console.WriteLine("Sei proprio pronto per partire!");
                     Console.WriteLine("Prima di partire vuoi per caso passare dal negozio ad acquistare qualcosa per il viaggio?");
                     Scelta = "";
@@ -247,7 +247,7 @@ namespace GraficaTestuale
                     Console.WriteLine("Bravissimo " + player.Nome + " !! Hai ammazzato il drago! Ora puoi salvare la principessa!!");
                     Console.WriteLine("Dopo due orette buone a cercare di aprire la gabbia riesci finalmente nell'intento!");
                     Console.WriteLine("La principessa ti ringrazia e scappa via con te dalla grotta");
-                    Console.WriteLine("Arrivati al paesaggio correte dal Re che è felicissimo nel veder tornata la sua amata figlia");
+                    Console.WriteLine("Arrivati al paese correte dal Re che è felicissimo nel veder tornata la sua amata figlia");
                     Console.WriteLine("Il re ti ringrazia tanto e ti regala altre 5 mo 'Invio'");
                     Console.ReadKey();
                     player.Oro += 5;
@@ -489,6 +489,7 @@ namespace GraficaTestuale
                     if (AzionePlayer != "1" && AzionePlayer != "2" && AzionePlayer != "3" && AzionePlayer != "4" && AzionePlayer != "5")
                     {
                         Console.WriteLine("Devi inserire un numero da 1 a 5");
+                        Console.ReadKey();
                         ToccaA = 0;
                     }
                     else
