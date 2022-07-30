@@ -40,7 +40,10 @@ using System.Threading;
                 nuove armi o aumentare le proprie statistiche
                 - decidere le condizioni finali di vittoria, quali un tot di
                 Oro da raggiungere, un tot di nemici da uccidere, uno specifico
-                nemico da uccidere  */
+                nemico da uccidere  
+                
+            -Aggiunta 28/03/2022
+                -Aggiungere Randomizzazione Mostri con una funziona che ritorni Enemy.*/
 
 namespace GraficaTestuale
 {
